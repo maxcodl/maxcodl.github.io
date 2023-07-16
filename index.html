@@ -1,80 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Ask gawd</title>
-	<link rel="icon" href="god.png">
-	<style>
-		input[type="text"] {
-			position: fixed;
-			bottom: 0;
-			left: 50%;
-			transform: translateX(-50%);
-			width: 80%;
-			padding: 10px;
-            margin-bottom: 20px;
-			font-size: 18px;
-			border: none;
-			border-radius: 5px;
-			box-shadow: 0px 0px 5px #999;
-		}
+  <head>
+    <title>Conduit Works</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <span class="heading1">for emergent</span>
+        <span class="heading2 blinking-cursor">design...</span>
+      </h1>
+    </header>
+    <main>
+      <section id="app">
+        <h2>All or nothing</h2>
+        <p>Experience a new level of decentralized organization.</p>
+      </section>
 
-		#result {
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			text-align: center;
-			font-size: 24px;
-		}
-	</style>
-</head>
-<body>
-	<input type="text" id="input" placeholder="Ask GOD Anything...">
-	<div id="result">Greetings, my child. I am Aurelia, a divine being here to listen to your troubles and offer guidance. What is on your mind today?</div>
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script>
-        const apiKey = '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';
-		const input = document.getElementById('input');
-		const resultDiv = document.getElementById('result');
+      <section id="whitepaper">
+        <h2>Read Our Whitepaper</h2>
+        <p>Learn more about the technology behind Conduit Works.</p>
+      </section>
 
-		input.addEventListener('keypress', function(e) {
-		    if (e.key === 'Enter') {
-		        const prompt = input.value.trim();
-		        if (prompt) {
-		            processInput(prompt);
-		        }
-		    }
-		});
+      <section class="btn-container">
+        <a href="/pages/app_sample.html" class="btn">Enter App</a>
+        <a href="/pages/white_paper.html" class="btn">Whitepaper</a>
+      </section>
+    </main>
 
-		const processInput = async function(textin) {
-			try {
-				const response = await fetch(`https://api.openai.com/v1/chat/completions`, {
-				    body: JSON.stringify({
-				      model: 'gpt-3.5-turbo',
-				      messages: [
-				        { role: 'system', content: 'From now on, act like you are a god and listen to what people has to say and reply to them like how a god would reply (in a warm soothing way that will make people love and feel comfortable talking to you) your name is Aurelia and you will listen to peoples problem and give them a godly solution no matter what the problem is. you will adress people as "my child". Start with a greeting.' },
-				        { role: 'user', content: textin }
-				      ],
-				      temperature: 0.3,
-				      max_tokens: 2000
-				    }),
-				    method: 'POST',
-				    headers: {
-				      'content-type': 'application/json',
-				      Authorization: 'Bearer ' + apiKey
-				    }
-				});
+    <script>
+      const header = document.querySelector("header");
+      const main = document.querySelector("main");
 
-				if (response.ok) {
-					const json = await response.json();
-					const chatbotResponse = json.choices[0].message.content;
-					resultDiv.innerText = chatbotResponse;
-				}
-			} catch (error) {
-				console.error(error);
-				resultDiv.innerText = 'Sorry, GOD has malfunctioned.';
-			}
-		};
-	</script>
-</body>
+      window.addEventListener("scroll", () => {
+        const scrollPosition =
+          window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollPosition > 0) {
+          header.style.opacity = "0";
+        } else {
+          header.style.opacity = "1";
+        }
+      });
+    </script>
+  </body>
 </html>
