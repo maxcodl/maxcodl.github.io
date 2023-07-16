@@ -3,32 +3,102 @@
   <head>
     <title>Conduit Works</title>
     <link rel="stylesheet" href="/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css"
+      integrity="sha512-4rPgyv5iG0PZw8E+oMi8eitz/MdUSRbXe3u1lHh23vONYXuGrbeq7HlMa7IdkZ8LaudZd2z05KYW2IXvKmq3Mg=="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"
+      integrity="sha512-zo1lOX6iQ7A8BZv3I3aQz4eWVXS9L5Lt2mzc3bFnpFA/qNrDyn3Bh5fPBkaVsEgh3IwYZ3f6jOveMkyrkdy7w=="
+      crossorigin="anonymous"
+    ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
+  <div class="logo" onclick="myFunction()">
+    <img src="\assets\logo.svg" alt="Logo" />
+  </div>
   <body>
-    <header>
-      <h1>
-        <span class="heading1">for emergent</span>
-        <span class="heading2 blinking-cursor">design...</span>
-      </h1>
-      <br /><br />
-    </header>
-    <br /><br /><br /><br /><br /><br />
-    <main>
-      <section id="whitepaper">
-        <h2>All or nothing</h2>
-        <p>Experience a new level of decentralized organization.</p>
-      </section>
+    <div id="fullpage">
+      <div class="section">
+        <header>
+          <h1>
+            <span class="heading1">for emergent</span>
+            <span class="heading2 blinking-cursor">design...</span>
+          </h1>
+        </header>
+      </div>
 
-      <section class="btn-container">
-        <div class="btn-wrapper">
-          <a href="/pages/app_sample.html" class="btn">Enter App</a>
-        </div>
-        <div class="btn-wrapper">
-          <a href="/pages/white_paper.html" class="btn">Whitepaper</a>
-        </div>
-      </section>
-      <script src="/scripts/script.js"></script>
-    </main>
+      <div class="section">
+        <main>
+          <section>
+            <h2>All or nothing</h2>
+            <div class="textarea">
+              <p>
+                This whimsical white paper delves into the extraordinary
+                phenomenon of toast defying the laws of gravity. By examining
+                the peculiar antics of breakfast cuisine, we aim to bring a
+                lighthearted perspective to the otherwise serious scientific
+                community. Through hilarious anecdotes and tongue-in-cheek
+                experiments, we explore the possibilities of airborne toast,
+                floating crumbs, and levitating butter knives. While our
+                findings may not revolutionize the world, they will undoubtedly
+                tickle the funny bone and remind us that humor has a place in
+                even the most perplexing scientific endeavors. So grab your
+                laughter goggles and join us on this gravity-defying journey!
+              </p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="section">
+      <main>
+        <section id="whitepaper">
+          <h2>All or nothing</h2>
+          <p>
+            This whimsical white paper delves into the extraordinary phenomenon
+            of toast defying the laws of gravity. By examining the peculiar
+            antics of breakfast cuisine, we aim to bring a lighthearted
+            perspective to the otherwise serious scientific community. Through
+            hilarious anecdotes and tongue-in-cheek experiments, we explore the
+            possibilities of airborne toast, floating crumbs, and levitating
+            butter knives. While our findings may not revolutionize the world,
+            they will undoubtedly tickle the funny bone and remind us that humor
+            has a place in even the most perplexing scientific endeavors. So
+            grab your laughter goggles and join us on this gravity-defying
+            journey!
+          </p>
+        </section>
+
+        <section class="btn-container">
+          <div class="btn-wrapper">
+            <a href="/pages/app_sample.html" class="btn">#woodworks</a>
+          </div>
+          <div class="btn-wrapper">
+            <a href="/pages/white_paper.html" class="btn">#whitepaper</a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/scripts/script.js"></script>
+    <script>
+      new fullpage("#fullpage", {
+        sectionsColor: [
+          "#1bbc9b",
+          "#4BBFC3",
+          "#7BAABE",
+          "whitesmoke",
+          "#ccddff",
+        ],
+      });
+      function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+    </script>
   </body>
 </html>
