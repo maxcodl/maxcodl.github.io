@@ -7,33 +7,32 @@ body {
 }
 
 header {
+  margin-left: 30px;
   background-color: #ffffff;
   padding: 40px;
   color: #000000;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  min-height: 100vh;
   width: 100%;
-  z-index: 2;
+  z-index: 2; /* Increase the z-index value */
   transition: opacity 0.5s;
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
 }
 
 main {
   padding: 40px;
   position: relative;
-  z-index: 1;
+  z-index: 1; /* Reduce the z-index value */
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-top: 100px; /* Add a top margin to create space for the fixed header */
 }
 
 h1 {
@@ -69,6 +68,8 @@ p {
   50% {
     opacity: 0;
   }
+}
+
 .btn-container {
   display: flex;
   justify-content: center;
