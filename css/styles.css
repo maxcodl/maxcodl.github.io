@@ -7,6 +7,7 @@ body {
 }
 
 header {
+  height: 100vh;
   margin-left: 30px;
   background-color: #ffffff;
   padding: 40px;
@@ -15,7 +16,7 @@ header {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  z-index: 2; /* Increase the z-index value */
+  z-index: 2;
   transition: opacity 0.5s;
   position: fixed;
   top: 0;
@@ -23,9 +24,10 @@ header {
 }
 
 main {
+  height: 100vh;
   padding: 40px;
   position: relative;
-  z-index: 1; /* Reduce the z-index value */
+  z-index: 1;
   max-width: 800px;
   margin: 40px auto;
   display: flex;
@@ -35,17 +37,21 @@ main {
   margin-top: 100px; /* Add a top margin to create space for the fixed header */
 }
 
+header.scrolled {
+  position: absolute; /* Change to absolute positioning when scrolled */
+}
+
 h1 {
   font-size: 15vw;
   margin: 0;
 }
 h2,
 p {
-  text-align: left;
+  text-align: center;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 50px;
   font-weight: bold;
 }
 

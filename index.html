@@ -11,10 +11,10 @@
         <span class="heading1">for emergent</span>
         <span class="heading2 blinking-cursor">design...</span>
       </h1>
-      <br><br>
+      <br /><br />
     </header>
+    <br /><br /><br /><br /><br /><br />
     <main>
-      <BR></BR>
       <section id="whitepaper">
         <h2>All or nothing</h2>
         <p>Experience a new level of decentralized organization.</p>
@@ -38,9 +38,11 @@
         const scrollPosition =
           window.pageYOffset || document.documentElement.scrollTop;
         if (scrollPosition > 0) {
-          header.style.opacity = "0";
+          header.classList.add("scrolled");
+          main.style.marginTop = `${header.offsetHeight}px`;
         } else {
-          header.style.opacity = "1";
+          header.classList.remove("scrolled");
+          main.style.marginTop = "0";
         }
       });
     </script>
