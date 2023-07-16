@@ -38,11 +38,11 @@
         const scrollPosition =
           window.pageYOffset || document.documentElement.scrollTop;
         if (scrollPosition > 0) {
-          header.classList.add("scrolled");
-          main.style.marginTop = `${header.offsetHeight}px`;
+          header.style.opacity = "0";
+          header.style.transform = "translateY(-100%)";
         } else {
-          header.classList.remove("scrolled");
-          main.style.marginTop = "0";
+          header.style.opacity = "1";
+          header.style.transform = "translateY(0)";
         }
       });
     </script>
