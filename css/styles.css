@@ -8,10 +8,10 @@ body {
 
 header {
   background-color: #ffffff;
-  padding: 20px;
+  padding: 40px;
   color: #000000;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   min-height: 100vh;
   width: 100%;
@@ -19,8 +19,8 @@ header {
   transition: opacity 0.5s;
   position: fixed;
   top: 0;
-  left: 0;
-  height: 100vh;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 main {
@@ -71,6 +71,10 @@ p {
   flex-wrap: wrap;
 }
 
+.btn-wrapper {
+  margin: 40px;
+}
+
 .btn {
   display: inline-block;
   padding: 15px 30px;
@@ -79,8 +83,11 @@ p {
   color: #ffffff;
   text-decoration: none;
   border-radius: 4px;
-  margin: 20px;
   transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #333333;
 }
 
 .btn:first-child {
@@ -89,10 +96,6 @@ p {
 
 .btn:last-child {
   margin-right: 0;
-}
-
-.btn:hover {
-  background-color: #333333;
 }
 
 /* Responsive Styles */
