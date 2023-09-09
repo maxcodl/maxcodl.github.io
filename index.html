@@ -16,9 +16,10 @@
     ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <div class="logo" onclick="myFunction()">
-    <img src="\assets\battery-bolt-alt-svgrepo-com.svg" alt="Logo" />
+  <div class="logo" onclick="toggleDarkMode()">
+    <img id="logo-image" src="/assets/dark.svg" alt="Logo" />
   </div>
+  
   <body>
     <div id="fullpage">
       <div class="section">
@@ -75,10 +76,20 @@
           "#ccddff",
         ],
       });
-      function myFunction() {
-        var element = document.body;
-        element.classList.toggle("dark-mode");
-      }
+      function toggleDarkMode() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+
+  var logoImage = document.getElementById("logo-image");
+
+  if (logoImage.src.endsWith("dark.svg")) {
+    logoImage.src = "/assets/white.svg";
+  } else {
+    logoImage.src = "/assets/dark.svg";
+  }
+}
+
+
     </script>
   </body>
 </html>
