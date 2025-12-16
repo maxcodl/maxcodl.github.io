@@ -106,23 +106,83 @@
       }
 
       .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        display: flex;
+        flex-direction: column;
         gap: 15px;
         margin-top: 30px;
+        max-height: 280px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-snap-type: y mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 80px 0;
+        position: relative;
+      }
+
+      .grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .grid::before,
+      .grid::after {
+        content: '';
+        position: sticky;
+        left: 0;
+        right: 0;
+        height: 80px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .grid::before {
+        top: 0;
+        background: linear-gradient(to bottom, 
+          white 0%, 
+          rgba(255, 255, 255, 0.8) 50%, 
+          transparent 100%);
+      }
+
+      .grid::after {
+        bottom: 0;
+        background: linear-gradient(to top, 
+          white 0%, 
+          rgba(255, 255, 255, 0.8) 50%, 
+          transparent 100%);
+      }
+
+      body.dark-mode .grid::before {
+        background: linear-gradient(to bottom, 
+          black 0%, 
+          rgba(0, 0, 0, 0.8) 50%, 
+          transparent 100%);
+      }
+
+      body.dark-mode .grid::after {
+        background: linear-gradient(to top, 
+          black 0%, 
+          rgba(0, 0, 0, 0.8) 50%, 
+          transparent 100%);
       }
 
       .card {
         background: #f8f8f8;
-        padding: 20px;
+        padding: 15px;
         border-radius: 10px;
         text-align: center;
-        transition: transform 0.3s ease, background 0.3s ease;
+        transition: transform 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        opacity: 0.5;
+        transform: scale(0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .card:hover {
-        transform: translateY(-5px);
-        background: #e8e8e8;
+        opacity: 1;
+        transform: scale(1);
       }
 
       body.dark-mode .card {
@@ -140,9 +200,15 @@
       }
 
       .card p {
-        font-size: 16px;
+        font-size: 15px;
         margin: 0;
-        line-height: 1.3;
+        line-height: 1.15;
+        font-weight: 600;
+        color: #1f1f1f;
+      }
+
+      body.dark-mode .card p {
+        color: white;
       }
 
       @media (max-width: 768px) {
@@ -166,10 +232,10 @@
       <img id="logo-image" src="/assets/dark.svg" alt="Dark mode toggle icon" />
     </button>
     <div class="container">
-      <a href="/" class="back-btn">← back to home</a>
+      <a href="/" class="back-btn">back to home</a>
 
       <h1>suspromax</h1>
-      <p class="subtitle">when pro becomes sus 🤔</p>
+      <p class="subtitle">when pro becomes sus</p>
 
       <div class="content">
         <h2>what is this?</h2>
@@ -189,20 +255,34 @@
         <h2>featured experiments</h2>
         <div class="grid">
           <div class="card">
-            <h3>🎮</h3>
             <p>random projects that probably shouldn't exist</p>
           </div>
           <div class="card">
-            <h3>🔧</h3>
             <p>tools that solve problems nobody asked about</p>
           </div>
           <div class="card">
-            <h3>🎨</h3>
             <p>creative coding experiments</p>
           </div>
           <div class="card">
-            <h3>🤖</h3>
             <p>automations that automate automation</p>
+          </div>
+          <div class="card">
+            <p>diy racing sim with questionable ergonomics</p>
+          </div>
+          <div class="card">
+            <p>custom mechanical keyboards nobody needs</p>
+          </div>
+          <div class="card">
+            <p>websites that break every design rule</p>
+          </div>
+          <div class="card">
+            <p>scripts that do one thing perfectly wrong</p>
+          </div>
+          <div class="card">
+            <p>hardware hacks held together by hope</p>
+          </div>
+          <div class="card">
+            <p>algorithms optimized for chaos</p>
           </div>
         </div>
       </div>
