@@ -80,6 +80,53 @@
 
     <script src="/scripts/script.js"></script>
     <script>
+      // Typewriter effect function
+      function typeWriter(element, text, speed, callback) {
+        var i = 0;
+        element.textContent = "";
+        element.classList.remove("blinking-cursor");
+        function type() {
+          if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+          } else if (callback) {
+            setTimeout(callback, 200);
+          }
+        }
+        type();
+      }
+
+      // Scroll troll timer
+      var hasScrolled = false;
+      var scrollTimer = setTimeout(function () {
+        if (!hasScrolled) {
+          var heading1 = document.querySelector(".heading1");
+          var heading2 = document.querySelector(".heading2");
+          var h1 = document.querySelector("header h1");
+          var header = document.querySelector("header");
+          if (heading1 && heading2 && h1 && header) {
+            // Clear original text first
+            heading1.textContent = "";
+            heading2.textContent = "";
+            h1.style.fontSize = "8vw";
+            header.style.justifyContent = "flex-start";
+
+            // Start typewriter after clearing
+            setTimeout(function () {
+              typeWriter(
+                heading1,
+                "bruh, are you not gonna scroll?",
+                80,
+                function () {
+                  typeWriter(heading2, "i was trolling you", 80);
+                }
+              );
+            }, 100);
+          }
+        }
+      }, 10000);
+
       new fullpage("#fullpage", {
         sectionsColor: [
           "#1bbc9b",
@@ -88,7 +135,15 @@
           "whitesmoke",
           "#ccddff",
         ],
+        onLeave: function (origin, destination, direction) {
+          // User scrolled, cancel the timer
+          if (!hasScrolled) {
+            hasScrolled = true;
+            clearTimeout(scrollTimer);
+          }
+        },
       });
+
       function toggleDarkMode() {
         var element = document.body;
         element.classList.toggle("dark-mode");
