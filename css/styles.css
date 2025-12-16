@@ -36,6 +36,10 @@ body {
   top: 0;
   right: 0;
   z-index: 10; /* Ensure it stays on top of other content */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 .logo img {
   width: 60px; /* Adjust width as needed */

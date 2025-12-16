@@ -1,29 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>susstuff</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>susstuff - max's den</title>
+    <meta name="description" content="Random sus stuff and thoughts" />
+    <link rel="stylesheet" href="/css/styles.css" />
 
     <style>
       @import url("https://fonts.cdnfonts.com/css/aileron?styles=20899");
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
       body {
         font-family: "Aileron", sans-serif;
-        font-size: 50px;
-        font-weight: bold;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
+        background-color: #f0f0f0;
+        color: #333;
+        min-height: 100vh;
+        padding: 40px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      body.dark-mode {
+        background-color: black;
+        color: white;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .back-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background: #1f1f1f;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        font-size: 16px;
+        transition: background 0.3s ease;
+      }
+
+      .back-btn:hover {
+        background: #333333;
+      }
+
+      body.dark-mode .back-btn {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      body.dark-mode .back-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
       }
 
       h1 {
-        margin: 0;
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+
+      body.dark-mode h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        font-family: "Montserrat", sans-serif;
+        font-size: 20px;
+        margin-bottom: 40px;
+        opacity: 0.9;
+      }
+
+      .post {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .post:hover {
+        transform: translateX(5px);
+      }
+
+      body.dark-mode .post {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        box-shadow: none;
+      }
+
+      .post-date {
+        font-family: "Montserrat", sans-serif;
+        font-size: 14px;
+        opacity: 0.7;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 28px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-size: 18px;
+        line-height: 1.8;
+        font-weight: 300;
+        margin-bottom: 15px;
+      }
+
+      .tags {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+
+      .tag {
+        background: #e0e0e0;
+        color: #333;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      body.dark-mode .tag {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .emoji {
+        font-size: 40px;
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 40px;
+        }
+
+        .post {
+          padding: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <h1>coming soon</h1>
+    <button
+      class="logo"
+      onclick="toggleDarkMode()"
+      aria-label="Toggle dark mode"
+      type="button"
+    >
+      <img id="logo-image" src="/assets/dark.svg" alt="Dark mode toggle icon" />
+    </button>
+    <div class="container">
+      <a href="/" class="back-btn">← back to home</a>
+
+      <h1>susstuff</h1>
+      <p class="subtitle">
+        random thoughts, weird ideas, and general sus vibes
+      </p>
+
+      <div class="post">
+        <div class="post-date">december 2025</div>
+        <span class="emoji">🌐</span>
+        <h2>welcome to susstuff</h2>
+        <p>
+          this is where i dump random thoughts, ideas, and things that don't fit
+          anywhere else. it's basically my digital notebook but public. might
+          delete later, might not.
+        </p>
+        <p>
+          expect randomness, half-baked ideas, and occasional wisdom (emphasis
+          on occasional).
+        </p>
+        <div class="tags">
+          <span class="tag">meta</span>
+          <span class="tag">intro</span>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-date">december 2025</div>
+        <span class="emoji">💭</span>
+        <h2>on building websites</h2>
+        <p>
+          there's something therapeutic about building your own corner of the
+          internet. no algorithms, no engagement metrics, just you and some
+          HTML/CSS/JS doing their thing.
+        </p>
+        <p>it's like having a digital garden but messier. and more sus.</p>
+        <div class="tags">
+          <span class="tag">web</span>
+          <span class="tag">thoughts</span>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-date">december 2025</div>
+        <span class="emoji">🎨</span>
+        <h2>design philosophy</h2>
+        <p>
+          my design philosophy is simple: if it looks cool and doesn't break,
+          ship it. perfection is overrated. iteration is key. also gradients are
+          underrated.
+        </p>
+        <p>
+          fun fact: this entire site was built with vibes and google searches.
+          that's how most websites are made anyway.
+        </p>
+        <div class="tags">
+          <span class="tag">design</span>
+          <span class="tag">philosophy</span>
+          <span class="tag">gradients</span>
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-date">more coming soon</div>
+        <span class="emoji">✨</span>
+        <h2>to be continued</h2>
+        <p>
+          more sus stuff incoming. stay tuned for random updates, project logs,
+          and whatever else i feel like sharing with the void.
+        </p>
+        <div class="tags">
+          <span class="tag">placeholder</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      function toggleDarkMode() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+
+        var logoImage = document.getElementById("logo-image");
+
+        if (logoImage.src.endsWith("dark.svg")) {
+          logoImage.src = "/assets/white.svg";
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          logoImage.src = "/assets/dark.svg";
+          localStorage.setItem("darkMode", "disabled");
+        }
+      }
+
+      // Check for saved dark mode preference
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("logo-image").src = "/assets/white.svg";
+      }
+    </script>
   </body>
 </html>
