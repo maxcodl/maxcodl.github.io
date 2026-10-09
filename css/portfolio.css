@@ -1,0 +1,100 @@
+:root {
+  --bg: #07070d;
+  --fg: #ecebff;
+  --muted: #8b8aa8;
+  --card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.09);
+  --a: #7c5cff;
+  --b: #00e0c6;
+  --c: #ff5cae;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.mono { font-family: "JetBrains Mono", monospace; }
+a { color: inherit; text-decoration: none; }
+
+#bg { position: fixed; inset: 0; z-index: -2; width: 100%; height: 100%; }
+#glow {
+  position: fixed; z-index: -1; pointer-events: none;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.18), transparent 60%);
+  transform: translate(-50%, -50%); left: 50%; top: 30%;
+}
+#progress {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 30;
+  background: linear-gradient(90deg, var(--a), var(--b), var(--c));
+}
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 18px clamp(20px, 5vw, 60px);
+  backdrop-filter: blur(14px);
+  background: linear-gradient(var(--bg), transparent);
+}
+.nav-logo { font-weight: 800; font-size: 1.4rem; }
+.nav-logo span { color: var(--b); }
+.nav-links { display: flex; gap: 28px; font-size: 0.95rem; color: var(--muted); }
+.nav-links a:hover { color: var(--fg); }
+
+.grad {
+  background: linear-gradient(100deg, var(--a), var(--b) 55%, var(--c));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  background-size: 200% auto; animation: shift 6s linear infinite;
+}
+@keyframes shift { to { background-position: 200% center; } }
+
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 120px clamp(20px, 8vw, 120px) 60px; position: relative;
+}
+.eyebrow { color: var(--b); margin-bottom: 18px; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 7rem); line-height: 1.05; font-weight: 800; letter-spacing: -0.03em; }
+.caret { display: inline-block; width: 0.08em; height: 0.9em; margin-left: 4px; background: var(--b); vertical-align: -0.05em; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.lede { margin-top: 28px; max-width: 620px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.3rem); }
+.cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+.btn {
+  padding: 13px 26px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--card); font-weight: 500; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-3px); border-color: var(--a); box-shadow: 0 8px 30px rgba(124, 92, 255, 0.3); }
+.btn.primary { background: linear-gradient(100deg, var(--a), #5b8cff); border-color: transparent; }
+.scroll-hint { position: absolute; bottom: 30px; left: clamp(20px, 8vw, 120px); color: var(--muted); font-size: 0.85rem; animation: bob 2s ease-in-out infinite; transition: opacity 0.4s; }
+@keyframes bob { 50% { transform: translateY(8px); } }
+
+main { padding: 0 clamp(20px, 8vw, 120px); }
+section { padding: 100px 0; max-width: 1200px; margin: 0 auto; }
+h2 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 36px; }
+h2 .num { color: var(--b); font-size: 0.45em; vertical-align: super; margin-right: 10px; }
+
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.reveal.in { opacity: 1; transform: none; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.chip {
+  font: inherit; font-size: 0.85rem; cursor: pointer; color: var(--muted);
+  padding: 7px 16px; border-radius: 999px; background: var(--card); border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.chip:hover { color: var(--fg); }
+.chip.on { color: #fff; background: var(--a); border-color: var(--a); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+.card {
+  position: relative; padding: 28px; border-radius: 20px; overflow: hidden;
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.15s ease-out, border-color 0.3s, opacity 0.3s;
+  transform-style: preserve-3d; will-change: transform;
+}
+.card::before {
+  content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; pointer-events: none;
