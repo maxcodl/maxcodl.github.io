@@ -1,169 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>max's den</title>
     <meta
       name="description"
-      content="Max's personal website - a creative space for projects and ideas"
+      content="Max — developer building Android apps, browser extensions, bots and web tools."
     />
     <meta property="og:title" content="max's den" />
     <meta
       property="og:description"
-      content="Max's personal website - a creative space for projects and ideas"
+      content="Max — developer building Android apps, browser extensions, bots and web tools."
     />
     <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css"
-      integrity="sha512-4rPgyv5iG0PZw8E+oMi8eitz/MdUSRbXe3u1lHh23vONYXuGrbeq7HlMa7IdkZ8LaudZd2z05KYW2IXvKmq3Mg=="
-      crossorigin="anonymous"
     />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"
-      integrity="sha512-zo1lOX6iQ7A8BZv3I3aQz4eWVXS9L5Lt2mzc3bFnpFA/qNrDyn3Bh5fPBkaVsEgh3IwYZ3f6jOveMkyrkdy7w=="
-      crossorigin="anonymous"
-    ></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/portfolio.css" />
   </head>
   <body>
-    <button
-      class="logo"
-      onclick="toggleDarkMode()"
-      aria-label="Toggle dark mode"
-      type="button"
-    >
-      <img id="logo-image" src="/assets/dark.svg" alt="Dark mode toggle icon" />
-    </button>
-    <div id="fullpage">
-      <div class="section">
-        <header>
-          <h1>
-            <span class="heading1">loading ‎ ‎ ‎ ‎‎‎ ‎ ‎ ‎ ‎ ‎‎‎ ‎ ‎ ‎ </span>
-            <span class="heading2 blinking-cursor">pls be patient...</span>
-          </h1>
-        </header>
+    <canvas id="bg" aria-hidden="true"></canvas>
+    <div id="glow" aria-hidden="true"></div>
+    <div id="progress" aria-hidden="true"></div>
+
+    <nav class="nav">
+      <a href="#top" class="nav-logo">max<span>.</span></a>
+      <div class="nav-links">
+        <a href="#projects">projects</a>
+        <a href="#about">about</a>
+        <a href="#contact">contact</a>
       </div>
+    </nav>
 
-      <div class="section">
-        <main>
-          <section>
-            <h2>intro</h2>
-            <div class="textarea">
-              <p>hi, im max and this is my website.</p>
-            </div>
-          </section>
-        </main>
+    <header id="top" class="hero">
+      <p class="eyebrow mono">// hello world</p>
+      <h1>
+        i'm <span class="grad">max</span>.<br />
+        i build <span id="typed" class="grad"></span><span class="caret"></span>
+      </h1>
+      <p class="lede">
+        Android apps, browser extensions, bots and web tools — mostly things i
+        needed that didn't exist yet.
+      </p>
+      <div class="cta">
+        <a href="#projects" class="btn primary">see my work</a>
+        <a href="https://github.com/maxcodl" class="btn" target="_blank" rel="noopener">github ↗</a>
       </div>
+      <a href="#projects" class="scroll-hint mono" id="scroll-hint">scroll ↓</a>
+    </header>
 
-      <div class="section">
-        <main>
-          <section id="whitepaper">
-            <h2>hi again</h2>
-            <p>
-              nothing much to see here but i will add or update stuff when i get
-              time >.<
-            </p>
-          </section>
+    <main>
+      <section id="projects" class="reveal">
+        <h2><span class="mono num">01</span> projects</h2>
+        <div class="filters" id="filters"></div>
+        <div class="grid" id="grid"></div>
+      </section>
 
-          <section class="btn-container">
-            <div class="btn-wrapper">
-              <a href="/pages/susstuff.html" class="btn">#susstuff</a>
-            </div>
-            <div class="btn-wrapper">
-              <a href="/pages/suspromax.html" class="btn">#suspromax</a>
-            </div>
-          </section>
-        </main>
-      </div>
-    </div>
+      <section id="about" class="reveal">
+        <h2><span class="mono num">02</span> about</h2>
+        <div class="about">
+          <p>
+            i'm max. i ship small, useful software — apps for my phone, tools for
+            my browser, scripts that save me clicks. 18 original repos and
+            counting, plus a lot of forks and experiments.
+          </p>
+          <div class="stats">
+            <div><b data-count="85">0</b><span>public repos</span></div>
+            <div><b data-count="18">0</b><span>original projects</span></div>
+            <div><b data-count="5">0</b><span>languages across projects</span></div>
+          </div>
+          <div class="stack mono">
+            <span>Kotlin</span><span>Java</span><span>C++</span><span>Python</span>
+            <span>JavaScript</span><span>Flask</span><span>Selenium</span><span>HTML/CSS</span>
+          </div>
+        </div>
+      </section>
 
-    <script src="/scripts/script.js"></script>
-    <script>
-      // Typewriter effect function
-      function typeWriter(element, text, speed, callback) {
-        var i = 0;
-        element.textContent = "";
-        element.classList.remove("blinking-cursor");
-        function type() {
-          if (i < text.length) {
-            element.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-          } else if (callback) {
-            setTimeout(callback, 200);
-          }
-        }
-        type();
-      }
+      <section id="contact" class="reveal">
+        <h2><span class="mono num">03</span> contact</h2>
+        <p class="lede">
+          got an idea, a bug report, or just want to say hi? the best place to
+          find me is GitHub.
+        </p>
+        <div class="cta">
+          <a href="https://github.com/maxcodl" class="btn primary" target="_blank" rel="noopener">github.com/maxcodl ↗</a>
+          <a href="/pages/susstuff.html" class="btn">#susstuff</a>
+          <a href="/pages/suspromax.html" class="btn">#suspromax</a>
+        </div>
+      </section>
+    </main>
 
-      // Scroll troll timer
-      var hasScrolled = false;
-      var scrollTimer = setTimeout(function () {
-        if (!hasScrolled) {
-          var heading1 = document.querySelector(".heading1");
-          var heading2 = document.querySelector(".heading2");
-          var h1 = document.querySelector("header h1");
-          var header = document.querySelector("header");
-          if (heading1 && heading2 && h1 && header) {
-            // Clear original text first
-            heading1.textContent = "";
-            heading2.textContent = "";
-            h1.style.fontSize = "8vw";
-            header.style.justifyContent = "flex-start";
+    <footer class="mono">© <span id="year"></span> max · built by hand · <span id="egg">try the konami code</span></footer>
 
-            // Start typewriter after clearing
-            setTimeout(function () {
-              typeWriter(
-                heading1,
-                "bruh, are you not gonna scroll?",
-                80,
-                function () {
-                  typeWriter(heading2, "i was trolling you", 80);
-                }
-              );
-            }, 100);
-          }
-        }
-      }, 10000);
-
-      new fullpage("#fullpage", {
-        sectionsColor: [
-          "#1bbc9b",
-          "#4BBFC3",
-          "#7BAABE",
-          "whitesmoke",
-          "#ccddff",
-        ],
-        onLeave: function (origin, destination, direction) {
-          // User scrolled, cancel the timer
-          if (!hasScrolled) {
-            hasScrolled = true;
-            clearTimeout(scrollTimer);
-          }
-        },
-      });
-
-      function toggleDarkMode() {
-        var element = document.body;
-        element.classList.toggle("dark-mode");
-
-        var logoImage = document.getElementById("logo-image");
-
-        if (logoImage.src.endsWith("dark.svg")) {
-          logoImage.src = "/assets/white.svg";
-          localStorage.setItem("darkMode", "enabled");
-        } else {
-          logoImage.src = "/assets/dark.svg";
-          localStorage.setItem("darkMode", "disabled");
-        }
-      }
-
-      // Check for saved dark mode preference
-      if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark-mode");
-        document.getElementById("logo-image").src = "/assets/white.svg";
-      }
-    </script>
+    <script src="/scripts/portfolio.js"></script>
   </body>
 </html>
